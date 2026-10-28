@@ -18,8 +18,11 @@ jobs:
       - name: Create local.properties
         run: echo "sdk.dir=$ANDROID_HOME" > local.properties
         
-      - name: Build APK with Gradle
-        run: gradle assembleDebug
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.2
+        
+      - name: Build APK with Gradle Wrapper
+        run: ./gradlew assembleDebug
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
