@@ -12,11 +12,11 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
           
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-          
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
         
       - name: Build APK with Gradle
         run: gradle assembleDebug
